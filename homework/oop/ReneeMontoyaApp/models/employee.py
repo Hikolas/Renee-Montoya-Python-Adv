@@ -11,12 +11,5 @@ class Employee(Model):
         self.department_type = department_type
         self.department_id = department_id
 
-    def _generate_dict(self):
-        return {
-            'id': self.id,
-            'email': self.email,
-            'name': self.name,
-            'department_type': self.department_type,
-            'department_id': self.department_id
-        }
+
 
