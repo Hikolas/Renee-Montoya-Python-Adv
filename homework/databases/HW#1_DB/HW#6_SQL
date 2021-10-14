@@ -1,0 +1,30 @@
+
+1. sudo apt-get install mysql-server mysql-client
+
+mysql> SHOW DATABASES;
+mysql> CREATE DATABASE my_items;
+mysql> USE my_items
+
+mysql> CREATE TABLE phones(id INT PRIMARY KEY AUTO_INCREMENT, phone_name CHAR(200), user_id INT);
+mysql> CREATE TABLE phone_companies(id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, name VARCHAR(200) NOT NULL);
+
+mysql> SELECT* FROM phone_companies;
+mysql> SELECT* FROM phones;
+
+sudo mysql -u root -p my_items < my_items.sql   
+
+INSERT INTO phone_companies(name) VALUES ('xiaomi');
+INSERT INTO phone_companies(name) VALUES ('samsung');
+INSERT INTO phone_companies(name) VALUES ('apple');
+
+sudo mysqldump -u root -p my_items > my_items.sql
+
+mysql> INSERT INTO phones (phone_name,company_id, user_id) VALUES('Redmi 9T', 1, 1);
+mysql> INSERT INTO phones (phone_name,company_id, user_id) VALUES('Galaxy A20',2, 4);
+mysql> INSERT INTO phones (phone_name,company_id, user_id) VALUES('Iphone X', 3, 2);
+
+mysql> SELECT * FROM phone_companies WHERE name = 'xiaomi';
+mysql> SELECT * FROM phones WHERE id = 3;
+
+mysql> SELECT phones.id, phones.user_id, phone_companies.name FROM phones INNER JOIN phone_companies ON phones.user_id = phone_companies.id;
+
